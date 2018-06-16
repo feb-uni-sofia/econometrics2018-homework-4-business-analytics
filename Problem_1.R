@@ -13,9 +13,9 @@ muf <- mean(subset(housework$hours, housework$sex == 'f'))
 mum <- mean(subset(housework$hours, housework$sex == 'm'))
 
 # c)
-
-housework$female <- ifelse(housework$sex == "f", 'TRUE', 'FALSE')
-housework$male <- ifelse(housework$sex == "m", 'TRUE', 'FALSE')
+## /score -0.5 for using 'TRUE', 'FALSE' (character values)
+housework$female <- ifelse(housework$sex == "f", TRUE, FALSE)
+housework$male <- ifelse(housework$sex == "m", TRUE, FALSE)
 
 # d)
 
@@ -24,6 +24,12 @@ model1 <- lm(hours ~ female, data = housework)
 # e)
 
 summary(model1)
+
+## /score -2
+## NOTE: you need to consider _what_ is the explanatory variable
+## here. It is an indicator variable identifying women (a group). It is not
+## a _number_ of women...
+## (see the solution)
 
 # with this model we measure the linear connection between the hours spend in
 # houseworking and the female representatives who do it
@@ -36,15 +42,20 @@ summary(model1)
 # in houseworking and the mean  hours per week for keeping up the household clean
 # the R square is very low
 
-# f)
+## f)
+## /score -2
 
-# g)
+## g)
+## /score -2
 
-# h)
+## h)
+## /score -2
 
-# i)
+## i)
+## /score -2
 
-#j)
+## j)
+## /score -2
 
 model2 <- lm(hours ~ female + male, data = housework)
 summary(model2)
